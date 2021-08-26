@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout.html}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Delete Project</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+	<div>Delete Project</div>
+	<div>
+		<form th:object="${project}" th:action="@{/projects/delete/{id}(id=${project.id})}" action="#" method="get">
+			<div>
+				<input type="number" disabled id="id" th:field="*{id}" th:value="${project.id}"/>
+			</div>
+			<div>
+				<label for="name">Name</label>
+				<input type="text" disabled id="name" th:field="*{name}" th:value="${project.name}"/>
+			</div>
+			<div>
+				<label for="description">Description</label>
+				<input type="text" disabled id="description" th:field="*{description}" th:value="${project.description}"/>
+			</div>
+			<div>
+				<label for="link">Link</label>
+				<input type="text" disabled id="link" th:field="*{link}" th:value="${project.link}"/>
+			</div>
+			<div>
+			<button type="submit" value="delete">Delete</button>
+				<a th:href="@{/projects}">Cancel</a>
+			</div>
+				
+		</form>
+	</div>
+
+</div>
+</body>
+</html>

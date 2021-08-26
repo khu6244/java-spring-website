@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--   default header name is X-CSRF-TOKEN -->
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<style>
+.common {
+	 background-color: red;
+	font-size: 20
+}
+
+#header {
+	height: 100px
+}
+
+#headerTitle {
+	text-align: center;
+	top: 50%;
+	transform: translateY(-50%);
+	position: relative;
+}
+
+#middle {
+	height: 800px;
+}
+
+#menu {
+	background-color: yellow; 
+	float: left;
+	width: 20%;
+	height: 800px;
+}
+
+#userOperations {
+	position: absolute;
+	bottom: 100px;
+}
+
+#content {
+	background-color: lightskyblue;
+	float: right;
+	width: 80%;
+	height: 800px;
+}
+
+#footer {
+	height: 100px;
+}
+</style>
+</head>
+<body>
+
+	<div id="header" class="common">
+		<h1 id="headerTitle">Kevin Hu</h1>
+	</div>
+
+	<div id="middle" class="common">
+
+		<div id="menu" class="common">
+			<nav>
+				<div>
+					<div>
+						<a th:href="@{/home}">Home</a>
+					</div>
+					<div>
+						<a th:href="@{/projects}">Projects</a>
+					</div>
+					<div>
+						<a th:href="@{/users}">Users</a>
+					</div>
+					</br>
+					<div id="userOperations">
+						<div>
+							<a href="#" sec:authentication="name"></a>
+						</div>
+						<div>
+							<a th:href="@{/logout}">Log out</a>
+						</div>
+					</div>
+
+
+				</div>
+			</nav>
+		</div>
+
+		<div id="content" class="common">
+			<div th:if="${errorMsg != null}" th:text="${errorMsg}" >
+				
+			</div>
+		
+			<th:block layout:fragment="content" />
+		</div>
+
+	</div>
+
+	<div id="footer" class="common">
+		<span>Kevin Hu</span> <span>khu6244@gmail.com</span>
+	</div>
+
+</body>
+</html>
+

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout.html}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Keyboard</title>
+</head>
+<body>
+	<div layout:fragment="content" th:remove="tag">
+		<div>KEYBOARD CONTENT</div>
+		<div><img th:src="@{/img/keyboard/keyboard_test.jpg}"
+				style="width: 300px; height: 300px; float: left; margin: 10px"></img></div>
+	</div>
+</body>
+</html>

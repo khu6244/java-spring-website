@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout.html}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Users</title>
+</head>
+<body>
+
+	<th:block layout:fragment="content">
+		<div>
+			<table id="userTable">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Username</th>
+						<th>Email</th>
+						<th>Roles</th>
+						<th>Details</th>
+						<th sec:authorize="hasAuthority('ADMIN')">Action</th>
+
+					</tr>
+
+				</thead>
+				<tbody>
+					<tr th:each="user : ${userPage.content}" id="users">
+						<td th:text="${user.id}"></td>
+						<td th:text="${user.username}"></td>
+						<td th:text="${user.email}"></td>
+						<td>
+							<ul>
+								<li th:each="role, stat:${allRoles}"><input type="checkbox"
+									th:name="'role'+${stat.index}" th:value="${role}"
+									th:checked="${user.rolesName.contains(role)}" disabled /> <label
+									th:text="${role}"></label></li>
+							</ul>
+						</td>
+						<td><a th:href="@{/users/userdetails/{id}(id=${user.id})}">User
+								Details</a></td>
+
+
+						<td><a sec:authorize="hasAuthority('ADMIN')"
+							th:href="@{/users/delete/{id}(id=${user.id})}">Delete</a></td>
+					</tr>
+
+				</tbody>
+
+			</table>
+
+		</div>
+
+	</th:block>
+
+</body>
+<script th:inline="javascript">
+	function displayRole(roles) {
+
+	}
+</script>
+</html>

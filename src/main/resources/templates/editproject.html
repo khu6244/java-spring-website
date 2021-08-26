@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout.html}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit Project</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+	<div>Edit Project</div>
+	<div>
+		<form th:object="${project}" th:action="@{/projects/save}" action="#" method="post">
+			<div>
+				<input type="number" hidden="true" id="id" th:field="*{id}" th:value="${project.id}"/>
+			</div>
+			<div>
+				<label for="name">Name</label>
+				<input type="text" id="name" th:field="*{name}" th:value="${project.name}"/>
+			</div>
+			<div>
+				<label for="description">Description</label>
+				<input type="text" id="description" th:field="*{description}" th:value="${project.description}"/>
+			</div>
+			<div>
+				<label for="link">Link</label>
+				<input type="text" id="link" th:field="*{link}" th:value="${project.link}"/>
+			</div>
+			<button type="submit" value="Save">Save</button>
+			<a th:href="@{/projects}">Cancel</a>
+		</form>
+	</div>
+
+</div>
+</body>
+</html>

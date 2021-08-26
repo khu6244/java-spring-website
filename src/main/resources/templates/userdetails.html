@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout.html}">
+<head>
+<meta charset="ISO-8859-1">
+<title>User Details</title>
+
+
+<style>
+.phoneInput {
+	width: 30px
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+	-moz-appearance: textfield;
+}
+</style>
+</head>
+<body>
+	<div layout:fragment="content" th:remove="tag">
+		<form th:object="${user}" th:action="@{/users/save}" action="#"
+			method="post">
+			<div style="margin-left: 30px; margin-top: 15px">
+				<button type="button"
+					onclick="editPage();disableEnable('inputElements');">Edit</button>
+			</div>
+			<table style="margin-top: 10px">
+				<tr>
+					<td><input type="hidden" th:value="${user.id}"
+						th:field="${user.id}"></td>
+				</tr>
+				<tr>
+					<td><label for="name"> Name: </label></td>
+					<td><input class="inputElements" disabled type="text"
+						id="name" name="name" th:value="${user.username}"
+						th:field="${user.username}"></td>
+				</tr>
+				<tr>
+					<td><label for="email"> Email: </label></td>
+					<td><input class="inputElements" disabled type="email"
+						id="email" name="email" th:value="${user.email}"
+						th:field="${user.email}"></td>
+				</tr>
+			</table>
+			<br />
+			<div>Addresses:</div>
+
+			<div style="margin-left: 25px">
+				<table th:each="address, stat: ${user.addresses}"
+					style="margin: 25px">
+					<tr>
+						<td>Apartment Number:</td>
+						<td><input
+							th:class="'addressInput inputElements addressInput'+${address.id}"
+							disabled type="number" th:id="'apartment'+${address.id}"
+							name="apartment" th:value="${address.apartment}"
+							th:field="${user.addresses[__${stat.index}__].apartment}"></td>
+						<td><button type='button' class="deleteButton"
+								style="display: block"
+								th:onclick="'deleteAddress('+ ${user.id} +',' + ${address.id} +')'">Delete
+								Address</button></td>
+					</tr>
+					<tr>
+						<td>House Number:</td>
+						<td><input
+							th:class="'addressInput inputElements addressInput'+${address.id}"
+							disabled type="number" id="houseNumber" name="houseNumber"
+							th:value="${address.houseNumber}"
+							th:field="${user.addresses[__${stat.index}__].houseNumber}"></td>
+					</tr>
+					<tr>
+						<td>Street:</td>
+						<td><input
+							th:class="'addressInput inputElements addressInput'+${address.id}"
+							disabled type="text" id="street" name="street"
+							th:value="${address.street}"
+							th:field="${user.addresses[__${stat.index}__].street}"></td>
+					</tr>
+					<tr>
+						<td>City:</td>
+						<td><input
+							th:class="'addressInput inputElements addressInput'+${address.id}"
+							disabled type="text" id="city" name="city"
+							th:value="${address.city}"
+							th:field="${user.addresses[__${stat.index}__].city}"></td>
+					</tr>
+					<tr>
+						<td>Province:</td>
+						<td><input
+							th:class="'addressInput inputElements addressInput'+${address.id}"
+							disabled type="text" id="province" name="province"
+							th:value="${address.province}"
+							th:field="${user.addresses[__${stat.index}__].province}"></td>
+					</tr>
+					<tr>
+						<td>Country:</td>
+						<td><input
+							th:class="'addressInput inputElements addressInput'+${address.id}"
+							disabled type="text" id="country" name="country"
+							th:value="${address.country}"
+							th:field="${user.addresses[__${stat.index}__].country}"></td>
+					</tr>
+					<tr>
+						<td>Postal Code:</td>
+						<td><input
+							th:class="'addressInput inputElements addressInput'+${address.id}"
+							disabled type="text" id="postal" name="postal"
+							th:value="${address.postal}"
+							th:field="${user.addresses[__${stat.index}__].postal}"></td>
+					</tr>
+
+				</table>
+
+			</div>
+
+			<br />
+			<div>Phone Numbers:</div>
+			<div>
+				<div th:each="phone, stat: ${user.phones}">
+					<div th:id="'phone'+ ${phone.id}">
+						<div class="phoneTable" style="float: left">
+							<input style="margin-left: 20px"
+								th:class="'phoneInput inputElements phoneInput'+${phone.id}"
+								disabled type="number" th:id="'countryCode'+${phone.id}"
+								name="countryCode" th:value="${phone.countryCode}"
+								th:field="${user.phones[__${stat.index}__].countryCode}"></input>
+							<span> - </span> <input
+								th:class="'phoneInput inputElements phoneInput'+${phone.id}"
+								disabled type="number" th:id="'areaCode'+${phone.id}"
+								name="areaCode" th:value="${phone.areaCode}"
+								th:field="${user.phones[__${stat.index}__].areaCode}"></input> <span>
+								- </span> <input
+								th:class="'phoneInput inputElements phoneInput'+${phone.id}"
+								disabled type="number" th:id="'prefix'+${phone.id}"
+								name="prefix" th:value="${phone.prefix}"
+								th:field="${user.phones[__${stat.index}__].prefix}"></input> <span>
+								- </span> <input
+								th:class="'phoneInput inputElements phoneInput'+${phone.id}"
+								disabled type="number" th:id="'lineNumber'+${phone.id}"
+								name="lineNumber" th:value="${phone.lineNumber}"
+								th:field="${user.phones[__${stat.index}__].lineNumber}"></input>
+							<span> - </span> <input
+								th:class="'phoneInput inputElements phoneInput'+${phone.id}"
+								disabled type="number" th:id="'extension'+${phone.id}"
+								name="extension" th:value="${phone.extension}"
+								th:field="${user.phones[__${stat.index}__].extension}"></input>
+						</div>
+						<div>
+							<button type='button' style="display: block; margin-left:300px"
+								class="deleteButton"
+								th:onclick="'deletePhone('+ ${user.id} +',' + ${phone.id} +')'">Delete
+								Phone Number</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<table>
+				<tr>
+					<td><label for="roles"> Role(s): </label></td>
+					<td>
+						<div th:each="roleName, stat:${allRoleNames}">
+							<input class="inputElements" disabled type="checkbox"
+								th:field="*{selectedRoleNames}" th:value="${roleName}">
+							<label th:text="${roleName}"></label>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+			<table style="display: none" id="passwordTable"
+				th:if="${isLoggedinUser}">
+
+				<tr>
+					<td>
+						<button type="button" onclick="hideUnhide('changePassword');">
+							Change Password</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+
+						<table style="display: none" class="changePassword">
+							<tr>
+								<td><label for="currentPassword"> Current Password:
+								</label></td>
+								<td><input type="password" id="currentPassword"
+									name="currentPassword"></td>
+							</tr>
+							<tr>
+								<td><label for="newPassword"> New Password: </label></td>
+								<td><input type="password" id="newPassword"
+									name="newPassword"></td>
+							</tr>
+							<tr>
+								<td><label for="confirmPassword"> Confirm Password:
+								</label></td>
+								<td><input type="password" id="confirmPassword"
+									name="confirmPassword"></td>
+							</tr>
+
+						</table>
+					</td>
+				</tr>
+			</table>
+			<table id="saveButton" style="display: none">
+				<tr>
+					<td style="width: 50px"></td>
+					<td>
+						<button type="submit" value="Save">Save</button> <a
+						th:href="@{/users}">Cancel</a>
+					</td>
+
+				</tr>
+
+			</table>
+
+		</form>
+		<script th:inline="javascript">
+			function editPage() {
+				var x = document.getElementById("passwordTable");
+				if (x !== undefined && x !== null) {
+					if (x.style.display === "none") {
+						x.style.display = "block";
+					} else {
+						x.style.display = "none";
+					}
+				}
+
+				var y = document.getElementById("saveButton");
+
+				if (y.style.display === "none") {
+					y.style.display = "block";
+				} else {
+					y.style.display = "none";
+				}
+
+				var z = document.getElementsByClassName("deleteButton");
+				for (let i = 0; i < z.length; i++) {
+					if (z[i].style.display === "none") {
+						z[i].style.display = "block";
+					} else {
+						z[i].style.display = "none";
+					}
+				}
+				
+				var w = $(".phoneTable" );  //the jquery's way to do document.getElementsByClassName
+				for (let i = 0; i < w.length; i++) {
+					if (w[i].style.float === "left") {
+						w[i].style.float = "none";
+					} else {
+						w[i].style.float = "left";
+					}
+				}
+
+			}
+
+			function disableEnable(classname) {
+
+				var x = document.getElementsByClassName(classname);
+
+				for (let i = 0; i < x.length; i++) {
+					if (x[i].disabled === true) {
+						x[i].removeAttribute("disabled");
+					} else {
+						x[i].disabled = true;
+					}
+				}
+			}
+			function hideUnhide(classname) {
+				var x = document.getElementsByClassName(classname);
+				for (let i = 0; i < x.length; i++) {
+					if (x[i].style.display === "none") {
+						x[i].style.display = "block";
+					} else {
+						x[i].style.display = "none";
+					}
+
+				}
+			}
+
+			$(function() {
+				var token = $("input[name='_csrf']").val();
+				var header = "X-CSRF-TOKEN";
+				$(document).ajaxSend(function(e, xhr, options) {
+					xhr.setRequestHeader(header, token);
+				});
+			});
+
+			function deletePhone(uid, pid) {
+				var ids = {};
+				ids["uid"] = uid;
+				ids["id"] = pid;
+				$.ajax({
+					type : 'POST',
+					url : '/kevinhu/users/deletePhone',
+					data : JSON.stringify(ids),
+					dataType : 'json',
+					contentType : "application/json; charset=utf-8",
+					crossDomain : true,
+					success : function(msg) {
+						const jo = JSON.parse(JSON.stringify(msg));
+						console.log('delete successfully: ' + jo.responseText);
+						var phoneInputs = document
+								.getElementsByClassName('phoneInput' + pid);
+						for ( let p in phoneInputs) {
+							console.log('clean : ' + phoneInputs[p]);
+							phoneInputs[p].value = '';
+						}
+					},
+					error : function(xhr, type) {
+						alert('delete failed');
+						console.log(type);
+					}
+
+				});
+			}
+
+			function deleteAddress(uid, aid) {
+				var ids = {};
+				ids["uid"] = uid;
+				ids["id"] = aid;
+				$.ajax({
+					type : 'POST',
+					url : '/kevinhu/users/deleteAddress',
+					data : JSON.stringify(ids),
+					dataType : 'json',
+					contentType : "application/json; charset=utf-8",
+					crossDomain : true,
+					success : function(msg) {
+						const jo = JSON.parse(JSON.stringify(msg));
+						console.log('delete successfully: ' + jo.responseText);
+						var addressInputs = document
+								.getElementsByClassName('addressInput' + aid);
+						for ( let a in addressInputs) {
+							console.log('clean : ' + addressInputs[a]);
+							addressInputs[a].value = '';
+
+						}
+					},
+					error : function(xhr, type) {
+						alert('delete failed');
+						console.log(type);
+					}
+
+				});
+			}
+		</script>
+	</div>
+</body>
+
+</html>

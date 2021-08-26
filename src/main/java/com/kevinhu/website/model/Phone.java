@@ -1,0 +1,66 @@
+package com.kevinhu.website.model;
+
+import javax.persistence.*;
+
+@Entity
+public class Phone {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
+	@Column(nullable = false)
+	private String countryCode;
+	@Column(nullable = false)
+	private String areaCode;
+	@Column(nullable = false)
+	private String prefix;
+	@Column(nullable = false)
+	private String lineNumber;
+	@Column
+	private String extension;
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getCountryCode() {
+		return countryCode;
+	}
+	public void setCountryCode(String countryCode) {
+		this.countryCode = countryCode;
+	}
+	public String getAreaCode() {
+		return areaCode;
+	}
+	public void setAreaCode(String areaCode) {
+		this.areaCode = areaCode;
+	}
+	public String getPrefix() {
+		return prefix;
+	}
+	public void setPrefix(String prefix) {
+		this.prefix = prefix;
+	}
+	public String getLineNumber() {
+		return lineNumber;
+	}
+	public void setLineNumber(String lineNumber) {
+		this.lineNumber = lineNumber;
+	}
+	public String getExtension() {
+		return extension;
+	}
+	public void setExtension(String extension) {
+		this.extension = extension;
+	}
+	@Override
+	public String toString() {
+		return "Phone [id=" + id + ", countryCode=" + countryCode + ", areaCode=" + areaCode + ", prefix=" + prefix
+				+ ", lineNumber=" + lineNumber + ", extension=" + extension + "]";
+	}
+	
+	
+}

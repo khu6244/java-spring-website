@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/layout.html}"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Projects</title>
+
+
+
+</head>
+<body>
+	<div layout:fragment="content" th:remove="tag">
+		<form th:object="${projects}" th:action="@{/projects/save}" action="#"
+			method="post">
+			<div>My Projects</div>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Link</th>
+						<th sec:authorize="hasAuthority('ADMIN')">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="project : ${projectPage.content}" id="projects">
+						<td><div th:text="${project.name}"></div></td>
+						<td><div th:text="${project.description}"></div></td>
+						<td><a th:href="@{projects/project-pages/{link}(link=${project.link})}">More
+								Information</a></td>
+						<td sec:authorize="hasAuthority('ADMIN')"><a
+							th:href="@{projects/deleteproject/{id}(id=${project.id})}">Delete</a> <a
+							th:href="@{projects/edit/{id}(id=${project.id})}">Edit</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<a href="projects/add">Add Project</a>
+		</form>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
