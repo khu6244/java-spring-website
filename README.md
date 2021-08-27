@@ -14,3 +14,5 @@ INSERT INTO project (id, name, link)
 values (2, 'Wooden Coffee Table', 'table');
 
 Use these sql statements to set up the tables upon creating a local instance of this webapp
+
+test change
