@@ -37,8 +37,6 @@ public class UserController {
 
 	private UserService userService;
 	private RoleService roleService;
-//	private AddressService addressService;
-//	private PhoneService phoneService;
 	
 	private static Logger logger = LoggerFactory.getLogger(UserController.class);
 	private final static int PAGE_SIZE = 5;
@@ -47,8 +45,6 @@ public class UserController {
 	public UserController(UserService userService, RoleService roleService) {
 		this.roleService = roleService;
 		this.userService = userService;
-//		this.addressService = addressService;
-//		this.phoneService = phoneService;
 	}
 	
 	@GetMapping("")
