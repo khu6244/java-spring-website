@@ -11,7 +11,7 @@
 <meta name="_csrf" th:content="${_csrf.token}"/>
 <style>
 .common {
-	 background-color: red;
+	 background-color: #b395d7;
 	font-size: 20
 }
 
@@ -31,7 +31,7 @@
 }
 
 #menu {
-	background-color: yellow; 
+	background-color: #f0ef2b; 
 	float: left;
 	width: 20%;
 	height: 800px;
@@ -43,7 +43,7 @@
 }
 
 #content {
-	background-color: lightskyblue;
+	background-color: #eae3f9;
 	float: right;
 	width: 80%;
 	height: 800px;
@@ -75,6 +75,7 @@
 						<a th:href="@{/users}">Users</a>
 					</div>
 					</br>
+					
 					<div id="userOperations">
 						<div>
 							<a href="#" sec:authentication="name"></a>

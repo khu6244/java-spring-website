@@ -51,7 +51,7 @@ public class LoginController {
 	public String showHome(Model model) {
 
 		// "jpegtest.jpg" should get from database, not hard code here
-		model.addAttribute("imageName", "jpegtest.jpg");
+		model.addAttribute("imageName", "pfp.jpg");
 
 		return "home";
 	}

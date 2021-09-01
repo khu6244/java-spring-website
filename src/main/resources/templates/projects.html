@@ -29,17 +29,33 @@
 					<tr th:each="project : ${projectPage.content}" id="projects">
 						<td><div th:text="${project.name}"></div></td>
 						<td><div th:text="${project.description}"></div></td>
-						<td><a th:href="@{projects/project-pages/{link}(link=${project.link})}">More
+						<td><a
+							th:href="@{projects/project-pages/{link}(link=${project.link})}">More
 								Information</a></td>
 						<td sec:authorize="hasAuthority('ADMIN')"><a
-							th:href="@{projects/deleteproject/{id}(id=${project.id})}">Delete</a> <a
-							th:href="@{projects/edit/{id}(id=${project.id})}">Edit</a></td>
+							th:href="@{projects/deleteproject/{id}(id=${project.id})}">Delete</a>
+							<a th:href="@{projects/edit/{id}(id=${project.id})}">Edit</a></td>
 					</tr>
 				</tbody>
 			</table>
 			<a href="projects/add">Add Project</a>
 		</form>
+		</br> </br>
+		<div>
+			<div>Permanent Project Links</div>
+			<div>
+				<ul>
+					<li><a th:href="@{projects/project-pages/keyboard}">Keyboard</a></li>
+					<li><a th:href="@{projects/project-pages/table}">Coffee
+							Table</a></li>
+					<li><a th:href="@{projects/project-pages/website}">Java
+							Web App</a></li>
+				</ul>
+			</div>
+
+		</div>
 	</div>
+
 </body>
 </html>
 
