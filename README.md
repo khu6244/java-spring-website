@@ -30,19 +30,27 @@ Please do email me at khu6244@gmail.com with questions, concerns, bugs, feedback
 
 
 Admin user: "khu6244@gmail.com" (my actual email)
+
 User with only the "user" role: "guest@email.com" (not my email)
+
 Password for both: "q1w2e3" (obviously not my real password)
 
 SQL setup statements
 
+Use these to set up the tables upon creating a local instance of this webapp.
+
 INSERT INTO `projects_kevin.user` (`id`,`email`,`password`,`username`) VALUES (1,'khu6244@gmail.com','$2a$10$.BU0h2psmOPcwa8p4FLhw.vCLLpeap91IYZWmFLQ2REBxk3P9UsOK','khu6244');
+
 INSERT INTO `projects_kevin.user` (`id`,`email`,`password`,`username`) VALUES (2,'guest@email.com','$2a$10$.BU0h2psmOPcwa8p4FLhw.vCLLpeap91IYZWmFLQ2REBxk3P9UsOK','guest');
 
 INSERT INTO `role` (`id`,`name`) VALUES (1,'ADMIN');
+
 INSERT INTO `role` (`id`,`name`) VALUES (2,'USER');
 
 INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES (1, 1);
+
 INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES (1, 2);
+
 INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES (2, 1);
 
 INSERT INTO project (id, description, name, link)
@@ -52,8 +60,7 @@ INSERT INTO project (id, description, name, link)
 VALUES (2, 'I built a wooden coffee table with my dad, using 2x3s, 1x3s, and a plywood tabletop. We used dowels and applied stain and polyurethane at the end.', 'Wooden Coffee Table', 'table');
 
 INSERT INTO project (id, description, name, link)
-VALUES (3, 'I built a Java web app using the Spring MVC framework with MySQL. In fact, you're looking at it right now!', 'Java Web App', 'website');
+VALUES (3, 'I built a Java web app using the Spring framework with MySQL. In fact, you're looking at it right now!', 'Java Web App', 'website');
 
 
-Use these sql statements to set up the tables upon creating a local instance of this webapp
 Credit to https://github.com/batuhaniskr as the skeleton of this project is loosely based on his Spring Boot Product System.
