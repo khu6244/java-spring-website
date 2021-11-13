@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{fragments/layout.html}">
+	layout:decorate="~{fragments/projectPage.html}">
 <head>
 <meta charset="ISO-8859-1">
-<title>WEBSITE</title>
+<style>
+.keyboardContent {
+  margin: 20px;
+}
+
+#middle {
+	height: 2000px;
+}
+
+#menu {
+	background-color: #f0ef2b; 
+	float: left;
+	width: 20%;
+	height: 2000px;
+}
+
+
+#content {
+	background-color: #eae3f9;
+	float: right;
+	width: 80%;
+	height: 2000px;
+}
+
+</style>
+<title>Website</title>
+
 </head>
 <body>
 	<div layout:fragment="content" th:remove="tag">
