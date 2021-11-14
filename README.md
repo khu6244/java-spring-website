@@ -2,7 +2,27 @@
 
 Overview
 
+September 2021
 \* My plan is to deploy this web-app on a permanent domain which would allow me to link the project in various places, but as of September 2021 this project is still a work in progress as I still need to finish writing up the HTML pages that describe my projects on the website and add CSS beyond the basic layout. The code is here for anyone who wants to run it locally and test out the functionality. The back-end is as complete as I want it to be for this foray into full-stack programming, but I will be sporadically working up and updating the front-end throughout the school year (even though I hear second-year engineering is highly demanding). When I deploy the website, I will link it here.
+
+Future plans as of September 2021:
+- Write up the About Me section on the website and finish my HTML page write-ups on my projects. 
+- Finish the front-end and gradually add CSS as I find the time to do so.
+- Permanently link projects in the sidebar so they are still accessible even if people play around with and delete the project entries in the database.
+- Deploy on a permanent domain once the front-end is satisfactorily functional.
+- Link this GitHub page on the website when it is deployed and link the webapp on this GitHub page.
+- Link my LinkedIn on the website and the website on GitHub
+
+
+November 2021
+http://kevinhu.us-east-2.elasticbeanstalk.com/
+I have deployed my website using AWS. The web application is hosted on an AWS EC2 instance, while I am using Amazon RDS to host the MySQL database that is coupled to my web app. The frontend consists of HTML, Thymeleaf, CSS, and Javascript. The backend is written in Java using Spring Boot and JPA. The database used is MySQL. I am okay with using the default domain provided by AWS, so I have no plans to reroute traffic to my own domain currently. I took half of my reading week to deploy this and updates to the front-end will slow down significantly as I head into the final leg of my first semester of second year, but hopefully I can finish all content by the end of winter break. I'll then look to improve the CSS and continue to tinker afterwards. The front end is still incomplete as the project pages are heavily incomplete, but I thought that deploying the website even in its unfinished form was more important then writing up HTML.
+
+Future plans as of November 2021:
+- Finish project page write-ups. (End of winter break)
+- Figure out CSS and make the website more aesthetically pleasing and functional
+- Promote this on my LinkedIn and GitHub and stick the link to the website on my resume
+
 
 The following is a summer project that I completed during the summer after my first year of Engineering Science at U of T. I have had previous experience working in Python and C from both my academic studies as well as extracurricular learning before university, as well as a bare minumum of experience working with databases. However, I had never tried Java, HTML/CSS, Javascript, or worked in any framework like Spring. I put about six weeks of work into this website as of the start of my second year of engineering in September 2021, but the first few weeks were spent familiarizing myself with Java, HTML/CSS, as well as working alongside a few worked examples of rudimentary Spring MVC and Spring Boot web apps before starting with my own web app.
 
@@ -13,14 +33,6 @@ The highlights of this projects are:
  - A project table that contains information about and links to other personal projects I have done.
  - The ability to add, view, edit, and delete user information and project information, stored in a MySQL database.
  - Limited HTML/CSS demonstration with a few examples of Javascript and even one example of Ajax.
-
-Future plans as of September 2021:
-- Write up the About Me section on the website and finish my HTML page write-ups on my projects. 
-- Finish the front-end and gradually add CSS as I find the time to do so.
-- Permanently link projects in the sidebar so they are still accessible even if people play around with and delete the project entries in the database.
-- Deploy on a permanent domain once the front-end is satisfactorily functional.
-- Link this GitHub page on the website when it is deployed and link the webapp on this GitHub page.
-- Link my LinkedIn on the website and the website on GitHub
 
 The web app stores users, user information, and information about other projects I have done in a MySQL database. The user log-in functionality uses Spring Security and I have added two roles. In the below SQL statements, you can see that when I set up the webaspp initially, I insert a user with both admin and user roles, as well as a user with only the guest role. If you run this locally or after I have deployed it on a domain, you can log in with either user and see the differences. Some actions, such as editing and deleting some entries, are only available to admins, while all users can still do limited actions such as change their own password and their own user information. 
 
