@@ -2,6 +2,10 @@
 
 Overview
 
+Latest Update - September 2022
+
+Keeping the website up was a strain on financial resources so it is no longer deployed. All of the code is still on this GitHub, available for viewing.
+
 September 2021
 \* My plan is to deploy this web-app on a permanent domain which would allow me to link the project in various places, but as of September 2021 this project is still a work in progress as I still need to finish writing up the HTML pages that describe my projects on the website and add CSS beyond the basic layout. The code is here for anyone who wants to run it locally and test out the functionality. The back-end is as complete as I want it to be for this foray into full-stack programming, but I will be sporadically working up and updating the front-end throughout the school year (even though I hear second-year engineering is highly demanding). When I deploy the website, I will link it here.
 
